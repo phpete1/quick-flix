@@ -1,6 +1,5 @@
 <template>
   <!-- Loading Spinner or Placeholder -->
-  <div v-if="loading" class="loading-spinner">Loading...</div>
   <div class="flex flex-col space-y-32 w-3/5 z-10">
     <div class="grid grid-flow-col gap-8 text-left">
       <div>
@@ -25,7 +24,7 @@
     </div>
   </div>
 
-  <div class="absolute top-0 bottom-0 left-0 right-0 bg-slate-950">
+  <div v-if="title.backdrop_url" class="absolute top-0 bottom-0 left-0 right-0 bg-slate-950">
     <img
       :src="title.backdrop_url"
       class="object-cover w-full h-full opacity-10"
