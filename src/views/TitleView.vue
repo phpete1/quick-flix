@@ -35,6 +35,9 @@
 
 <script>
 import TitleProviders from "@/components/TitleProviders.vue";
+
+import Tmdb from "@/utils/Tmdb";
+
 export default {
   name: "TitleView",
   components: {
@@ -52,37 +55,9 @@ export default {
       buyRent: {},
     };
   },
-  methods: {
-    async fetchTitle() {
-      const url = `https://api.themoviedb.org/3/movie/${this.id}?language=en-US`;
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            `Bearer ${process.env.VUE_APP_TMDB_BEARER_TOKEN}`,
-        },
-      };
-
-      const response = await fetch(url, options);
-      let data = await response.json();
-
-      data.backdrop_url = data.backdrop_path
-        ? `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
-        : "";
-      data.poster_url = data.poster_path
-        ? `https://image.tmdb.org/t/p/original/${data.poster_path}`
-        : "";
-      data.tagline =
-        data.tagline && data.tagline.endsWith(".")
-          ? data.tagline.slice(0, -1)
-          : data.tagline;
-
-      return data;
-    },
-  },
   async created() {
-    this.title = await this.fetchTitle();
+    const tmdb = new Tmdb();
+    this.title = await tmdb.getTitle('movie', this.id);
   },
 };
 </script>

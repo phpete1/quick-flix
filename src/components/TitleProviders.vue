@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import Tmdb from '@/utils/Tmdb';
+
 export default {
   name: "TitleProviders",
   props: {
@@ -22,43 +24,9 @@ export default {
         providers: {}
     }
   },
-  methods: {
-    async fetchWatch() {
-      const url = `https://api.themoviedb.org/3/movie/${this.title_id}/watch/providers`;
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            `Bearer ${process.env.VUE_APP_TMDB_BEARER_TOKEN}`,
-        },
-      };
-
-      console.log(process.env.VUE_APP_TMDB_BEARER_TOKEN);
-
-      const response = await fetch(url, options);
-      const data = await response.json();
-
-      return data.results.GB;
-    }
-  },
   async created() {
-    let providers = await this.fetchWatch();
-    
-    providers = this.types.flatMap(type => providers?.[type] || []);
-
-    this.providers = providers
-      .map((provider) => ({
-        ...provider,
-        logo_url: provider.logo_path
-          ? `https://image.tmdb.org/t/p/original/${provider.logo_path}`
-          : "",
-      }))
-      .filter(
-        (provider, index, array) =>
-          array.findIndex((p) => p.provider_id === provider.provider_id) ===
-          index
-      );
+    const tmdb = new Tmdb();
+    this.providers = await tmdb.getProviders(this.title_id, this.types);
   }
 };
 </script>

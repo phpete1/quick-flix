@@ -52,22 +52,7 @@ export default {
           Object.keys(updatedResults.movies || {}).length !== 0 &&
           updatedResults.movies.results
         ) {
-          // Create a new `results` object with mapped results
-          this.results = {
-            ...updatedResults,
-            movies: {
-              ...updatedResults.movies,
-              results: updatedResults.movies.results.map((movie) => ({
-                ...movie,
-                poster_url: movie.poster_path
-                  ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                  : "https://placehold.co/1000x1500",
-                release_year: movie.release_date
-                  ? movie.release_date.split("-")[0]
-                  : "",
-              })),
-            },
-          };
+          this.results = updatedResults;
         } else {
           this.results = {
             movies: {}, // Reset `results` to an empty structure

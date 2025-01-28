@@ -5,7 +5,7 @@
     </h1>
     <form>
       <input
-        @keyup="searchMovie"
+        @keyup="searchMovies"
         v-model="searchQuery"
         type="text"
         class="bg-slate-800 border border-slate-700 outline-0 px-4 py-2 rounded text-white w-3/4"
@@ -19,6 +19,7 @@
 <script>
 // @ is an alias to /src
 import SearchResults from "@/components/SearchResults.vue";
+import Tmdb from "@/utils/Tmdb";
 
 export default {
   name: "HomeView",
@@ -34,22 +35,10 @@ export default {
     SearchResults,
   },
   methods: {
-    async searchMovie() {
-      const url = `https://api.themoviedb.org/3/search/movie?query=${this.searchQuery}&include_adult=false&language=en-GB&page=1`;
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            `Bearer ${process.env.VUE_APP_TMDB_BEARER_TOKEN}`,
-        },
-      };
-
-      const response = await fetch(url, options)
-        .then((res) => res.json())
-        .then((json) => (this.results.movies = json))
-        .catch((err) => console.error(err));
+    async searchMovies() {
+      const tmdb = new Tmdb();
+      this.results.movies = await tmdb.searchTitles('movies', this.searchQuery);
     },
-  },
+  }
 };
 </script>
