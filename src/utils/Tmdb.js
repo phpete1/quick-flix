@@ -7,7 +7,9 @@ export default class Tmdb {
     let result = await this.fetchTitle(id);
 
     result.backdrop_url = this.getImageUrl(result.backdrop_path, '');
-    result.poster_url = this.getImageUrl(result.poster_path, '1000x1500');;
+    result.poster_url = this.getImageUrl(result.poster_path, '1000x1500');
+    result.release_year = this.getReleaseYear(result.release_date);
+    result.vote_average_percentage = `${Math.floor(result.vote_average*10)}%`;
 
     return result;
   }
