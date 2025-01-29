@@ -3,7 +3,7 @@
     <h4 class="text-2xl text-slate-100">{{ heading }}</h4>
     <div class="grid grid-flow-col space-x-2">
       <div v-for="provider in providers" v-key="provider.provider_id">
-        <img :src="provider.logo_url" class="w-10 rounded-lg" />
+        <img :src="provider.logo_url" class="w-8 rounded-lg" />
       </div>
     </div>
   </div>
