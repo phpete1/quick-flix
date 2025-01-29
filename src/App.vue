@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-950 flex flex-col h-screen p-8">
+  <div class="bg-slate-950 flex flex-col h-screen p-8 md:p-8">
     <Header class="flex-none z-10" />
     <div class="flex-1 flex items-center justify-center overflow-auto">
       <router-view />

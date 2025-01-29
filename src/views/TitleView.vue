@@ -1,11 +1,11 @@
 <template>
   <!-- Loading Spinner or Placeholder -->
-  <div class="flex flex-col space-y-32 w-3/5 z-10">
-    <div class="grid grid-flow-col gap-8 text-left">
-      <div>
+  <div class="flex flex-col space-y-32 z-10">
+    <div class="grid grid-flow-col gap-8 text-left lg:max-w-256 w-full">
+      <div class="hidden md:block">
         <img class="rounded-lg w-64" :src="title.poster_url" />
       </div>
-      <div class="flex flex-col items-start justify-center space-y-4">
+      <div class="flex flex-col items-start space-y-4">
         <div>
           <h2 class="font-black text-4xl text-slate-50">{{ title.title }}</h2>
           <div class="flex flex-row space-x-4">

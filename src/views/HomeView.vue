@@ -1,18 +1,25 @@
 <template>
-  <div class="flex flex-col mb-32 space-y-4 w-1/2">
+  <div class="flex flex-col items-center mb-32 space-y-4 w-full md:w-3/4 lg:w-1/2">
     <h1 class="font-black text-white text-3xl">
       Search for a movie or TV show.
     </h1>
-    <form>
-      <input
-        @keyup="searchMovies"
-        v-model="searchQuery"
-        type="text"
-        class="bg-slate-800 border border-slate-700 outline-0 px-4 py-2 rounded text-white w-3/4"
-        placeholder="Start typing..."
+    <div class="relative max-w-full w-128">
+      <form>
+        <input
+          @keyup="searchMovies"
+          v-model="searchQuery"
+          type="text"
+          class="bg-slate-800 border border-slate-700 outline-0 px-4 py-2 rounded text-white w-full"
+          placeholder="Start typing..."
+        />
+      </form>
+      <SearchResults
+        :resultsProp="results"
+        v-if="
+          searchQuery.length > 0 && Object.keys(results.movies).length !== 0
+        "
       />
-    </form>
-    <SearchResults :resultsProp="results" v-if="searchQuery.length > 0 && Object.keys(results.movies).length !== 0" />
+    </div>
   </div>
 </template>
 
@@ -37,8 +44,8 @@ export default {
   methods: {
     async searchMovies() {
       const tmdb = new Tmdb();
-      this.results.movies = await tmdb.searchTitles('movies', this.searchQuery);
+      this.results.movies = await tmdb.searchTitles("movies", this.searchQuery);
     },
-  }
+  },
 };
 </script>

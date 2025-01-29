@@ -4,7 +4,7 @@
       (Object.keys(results.movies).length !== 0 &&
       results.movies.total_results > 0)
     "
-    class="bg-slate-100 text-left h-96 mx-auto overflow-hidden rounded-lg w-3/4"
+    class="absolute bg-slate-100 h-80 text-left mt-2 overflow-hidden rounded-lg top-full w-full"
   >
     <div class="h-full overflow-auto">
       <h3 class="p-4 text-2xl">Movies</h3>
