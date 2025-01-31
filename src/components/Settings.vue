@@ -6,24 +6,24 @@
       ></div>
 
       <div class="flex justify-center items-center relative w-full h-full">
-        <div class="bg-slate-50 flex flex-col rounded w-full md:w-3/4 lg:w-1/2">
+        <div class="bg-slate-800 border border-slate-700 flex flex-col rounded-lg w-full md:w-3/4 lg:w-1/2">
           <div
-            class="border-b border-slate-300 flex flex-row justify-between items-center p-4"
+            class="border-b border-slate-700 flex flex-row justify-between items-center p-4"
           >
-            <h2 class="text-xl text-slate-950">Settings</h2>
-            <i class="fa-solid fa-xmark cursor-pointer" @click="closeModal"></i>
+            <h2 class="text-xl text-slate-100">Settings</h2>
+            <i class="fa-solid fa-xmark cursor-pointer text-slate-400" @click="closeModal"></i>
           </div>
           <div class="p-4 space-y-4">
             <div class="grid grid-cols-12">
               <div class="col-span-3 flex flex-col space-y-2">
-                <span class="font-semibold">Region</span>
-                <span class="text-sm italic text-slate-600"
+                <span class="font-semibold text-slate-100">Region</span>
+                <span class="text-sm italic text-slate-400"
                   >Used to determine where to stream or buy content.</span
                 >
               </div>
               <div class="col-span-4 col-start-9">
                 <select
-                  class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg block w-full p-2.5"
+                  class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="country"
                   v-model="selectedRegion"
                   @change="updateSetting('region', selectedRegion)"
@@ -35,11 +35,11 @@
             </div>
             <div class="grid grid-cols-12">
               <div class="col-span-3 flex flex-col space-y-2">
-                <span class="font-semibold">Theme</span>
+                <span class="font-semibold text-slate-100">Theme</span>
               </div>
               <div class="col-span-4 col-start-9">
                 <select
-                  class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg block w-full p-2.5"
+                  class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="theme"
                   v-model="selectedTheme"
                   @change="updateSetting('theme', selectedTheme)"
