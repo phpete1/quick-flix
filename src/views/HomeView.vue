@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center mb-32 space-y-4 w-full md:w-3/4 lg:w-1/2">
+  <div class="flex flex-col items-center mb-32 space-y-16 w-full md:w-3/4 lg:w-1/2">
     <h1 class="font-black text-white text-3xl">
       Search for a movie or TV show.
     </h1>
