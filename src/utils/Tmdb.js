@@ -1,6 +1,10 @@
+import { useConfigStore } from "@/stores/ConfigStore";
+
 export default class Tmdb {
   constructor() {
+    const configStore = useConfigStore();
     this.bearer_token = import.meta.env.VITE_VUE_APP_TMDB_BEARER_TOKEN;
+    this.region = configStore.region;
   }
 
   async getTitle(endpoint, id) {
@@ -17,7 +21,7 @@ export default class Tmdb {
   async getProviders(id, types) {
     let results = await this.fetchProviders(id);
 
-    results = results.results.GB;
+    results = results.results[this.region];
 
     results = types.flatMap(type => results?.[type] || []);
 
