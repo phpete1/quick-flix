@@ -1,6 +1,6 @@
 export default class Tmdb {
   constructor() {
-    this.bearer_token = import.meta.env.VUE_APP_TMDB_BEARER_TOKEN;
+    this.bearer_token = import.meta.env.VITE_VUE_APP_TMDB_BEARER_TOKEN;
   }
 
   async getTitle(endpoint, id) {
