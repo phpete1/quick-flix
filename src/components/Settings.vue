@@ -2,33 +2,33 @@
   <Teleport to="body">
     <div class="fixed top-0 bottom-0 left-0 right-0 p-4 z-100" v-show="isOpen">
       <div
-        class="fixed top-0 bottom-0 left-0 right-0 bg-slate-950 h-full opacity-75 w-full"
+        class="bg-slate-50 fixed top-0 bottom-0 left-0 right-0 h-full opacity-75 w-full dark:bg-slate-950"
       ></div>
 
       <div class="flex justify-center items-center relative w-full h-full">
         <div
-          class="bg-slate-800 border border-slate-700 flex flex-col rounded-lg w-full md:w-3/4 lg:w-1/2"
+          class="bg-slate-100 border-slate-200 border flex flex-col rounded-lg w-full md:w-3/4 lg:w-1/2 dark:bg-slate-800 dark:border-slate-700 "
         >
           <div
-            class="border-b border-slate-700 flex flex-row justify-between items-center p-4"
+            class="border-b border-slate-200 flex flex-row justify-between items-center p-4 dark:border-slate-700"
           >
-            <h2 class="text-xl text-slate-100">Settings</h2>
+            <h2 class="text-xl text-slate-900 dark:text-slate-100">Settings</h2>
             <i
-              class="fa-solid fa-xmark cursor-pointer text-slate-400"
+              class="fa-solid fa-xmark cursor-pointer text-slate-600 dark:text-slate-400"
               @click="closeModal"
             ></i>
           </div>
           <div class="p-4 space-y-4">
             <div class="grid grid-cols-12">
               <div class="col-span-3 flex flex-col space-y-2">
-                <span class="font-semibold text-slate-100">Region</span>
-                <span class="text-sm italic text-slate-400"
+                <span class="font-semibold text-slate-900 dark:text-slate-100">Region</span>
+                <span class="text-sm italic text-slate-600 dark:text-slate-400"
                   >Used to determine where to stream or buy content.</span
                 >
               </div>
               <div class="col-span-4 col-start-9">
                 <select
-                  class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
+                  class="bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 cursor-pointer text-slate-950 dark:text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="country"
                   v-model="selectedRegion"
                   @change="configStore.setConfig('region', selectedRegion)"
@@ -50,7 +50,7 @@
               </div>
               <div class="col-span-4 col-start-9">
                 <select
-                  class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
+                  class="bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 cursor-pointer text-slate-950 dark:text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="theme"
                   v-model="selectedTheme"
                   @change="configStore.setConfig('theme', selectedTheme)"

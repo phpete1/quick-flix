@@ -1,5 +1,5 @@
 <template>
-    <nav class="text-white">
+    <nav class="text-black dark:text-white">
       <router-link to="/about">About</router-link>
     </nav>
 
