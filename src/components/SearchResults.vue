@@ -23,7 +23,7 @@
     class="bg-slate-100 flex flex-col items-center font-bold mx-auto p-4 rounded-lg space-y-2 w-3/4"
   >
     <p>No results.</p>
-    <img src="no-results.gif" class="mx-auto rounded w-1/2" />
+    <img src="/no-results.gif" class="mx-auto rounded w-1/2" />
   </div>
 </template>
 
