@@ -1,5 +1,6 @@
 <template>
   <div class="bg-slate-950 flex flex-col h-screen p-8 md:p-8">
+    <p class="text-red dark:text-white">{{ configStore.theme }}</p>
     <Header class="flex-none z-10" />
     <div class="flex-1 flex items-center justify-center overflow-auto">
       <router-view />
@@ -9,16 +10,48 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+
+import { useConfigStore } from './stores/ConfigStore';
 
 export default {
   name: 'Quickflix',
   components: {
     Header,
-    Footer
-  }
-}
+    Footer,
+  },
+  data() {
+    return {
+      configStore: useConfigStore(),
+    };
+  },
+  created() {
+    this.applyTheme(this.configStore.theme);
+  },
+  methods: {
+    applyTheme(theme) {
+      const htmlElement = document.documentElement;
+      const browserTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : '';
+      const selectedTheme =
+        theme === 'auto' ? browserTheme : theme;
+
+      if (selectedTheme === 'dark') {
+        htmlElement.setAttribute('data-theme','dark');
+      } else {
+        htmlElement.setAttribute('data-theme', '');
+      }
+    },
+  },
+  watch: {
+    'configStore.theme'(theme) {
+      this.applyTheme(theme);
+    },
+  },
+};
 </script>
 
 <style>

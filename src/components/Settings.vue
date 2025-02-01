@@ -6,12 +6,17 @@
       ></div>
 
       <div class="flex justify-center items-center relative w-full h-full">
-        <div class="bg-slate-800 border border-slate-700 flex flex-col rounded-lg w-full md:w-3/4 lg:w-1/2">
+        <div
+          class="bg-slate-800 border border-slate-700 flex flex-col rounded-lg w-full md:w-3/4 lg:w-1/2"
+        >
           <div
             class="border-b border-slate-700 flex flex-row justify-between items-center p-4"
           >
             <h2 class="text-xl text-slate-100">Settings</h2>
-            <i class="fa-solid fa-xmark cursor-pointer text-slate-400" @click="closeModal"></i>
+            <i
+              class="fa-solid fa-xmark cursor-pointer text-slate-400"
+              @click="closeModal"
+            ></i>
           </div>
           <div class="p-4 space-y-4">
             <div class="grid grid-cols-12">
@@ -26,10 +31,16 @@
                   class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="country"
                   v-model="selectedRegion"
-                  @change="updateSetting('region', selectedRegion)"
+                  @change="configStore.setConfig('region', selectedRegion)"
                 >
                   <option>Choose a country</option>
-                  <option v-for="country in countries" :value="country.code" :key="country.code">{{ country.name }}</option>
+                  <option
+                    v-for="country in countries"
+                    :value="country.code"
+                    :key="country.code"
+                  >
+                    {{ country.name }}
+                  </option>
                 </select>
               </div>
             </div>
@@ -42,12 +53,12 @@
                   class="bg-slate-700 border border-slate-600 cursor-pointer text-slate-50 text-sm rounded-lg block w-full p-2.5"
                   name="theme"
                   v-model="selectedTheme"
-                  @change="updateSetting('theme', selectedTheme)"
+                  @change="configStore.setConfig('theme', selectedTheme)"
                 >
                   <option>Choose a theme</option>
                   <option value="auto">Auto</option>
                   <option class="dark" value="dark">Dark</option>
-                  <option class="light"value="light">Light</option>
+                  <option class="light" value="light">Light</option>
                 </select>
               </div>
             </div>
@@ -59,17 +70,14 @@
 </template>
 
 <script>
-import { countries } from '@/utils/Countries';
+import { useConfigStore } from "@/stores/ConfigStore";
+import { countries } from "@/utils/Countries";
 export default {
   name: "Settings",
-  data(){
+  data() {
     return {
-        countries,
-        region: this.$settings.get('region'),
-        theme: this.$settings.get('theme'),
-        selectedRegion: this.$settings.get('region'),
-        selectedTheme: this.$settings.get('theme'),
-    }
+      countries,
+    };
   },
   props: {
     isOpen: {
@@ -82,9 +90,14 @@ export default {
     closeModal() {
       this.$emit("close");
     },
-    updateSetting(key, value) {
-        this.$settings.set(key, value);
-    }
-  }
+  },
+  setup() {
+    const configStore = useConfigStore();
+
+    const selectedRegion = configStore.region;
+    const selectedTheme = configStore.theme;
+
+    return { configStore, selectedRegion, selectedTheme };
+  },
 };
 </script>
