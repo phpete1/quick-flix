@@ -1,6 +1,5 @@
 <template>
-  <div class="bg-slate-950 flex flex-col h-screen p-8 md:p-8">
-    <p class="text-red dark:text-white">{{ configStore.theme }}</p>
+  <div class="bg-slate-100 dark:bg-slate-950 flex flex-col h-screen p-8 md:p-8">
     <Header class="flex-none z-10" />
     <div class="flex-1 flex items-center justify-center overflow-auto">
       <router-view />
@@ -40,9 +39,9 @@ export default {
         theme === 'auto' ? browserTheme : theme;
 
       if (selectedTheme === 'dark') {
-        htmlElement.setAttribute('data-theme','dark');
+        htmlElement.classList.add('dark');
       } else {
-        htmlElement.setAttribute('data-theme', '');
+        htmlElement.classList.remove('dark');
       }
     },
   },
