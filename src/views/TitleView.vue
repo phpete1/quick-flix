@@ -33,11 +33,11 @@
 
   <div
     v-if="title.backdrop_url"
-    class="absolute top-0 bottom-0 left-0 right-0 bg-slate-50 dark:bg-slate-950"
+    class="absolute top-0 bottom-0 left-0 right-0 bg-slate-200 dark:bg-slate-950"
   >
     <img
       :src="title.backdrop_url"
-      class="object-cover w-full h-full opacity-10"
+      class="object-cover w-full h-full opacity-20 dask:opacity-10"
     />
   </div>
 </template>
