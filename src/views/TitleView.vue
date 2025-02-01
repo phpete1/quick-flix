@@ -7,16 +7,16 @@
       </div>
       <div class="flex flex-col items-start space-y-4">
         <div>
-          <h2 class="font-black text-4xl text-slate-50">{{ title.title }}</h2>
+          <h2 class="font-black text-4xl text-slate-950 dark:text-slate-50">{{ title.title }}</h2>
           <div class="flex flex-row space-x-4">
-            <span class="text-slate-50">{{ title.release_year }}</span>
+            <span class="text-slate-950 dark:text-slate-50">{{ title.release_year }}</span>
             <div class="space-x-2">
               <i class="fa-solid fa-star text-yellow-500"></i>
-              <span class="text-slate-100">{{ title.vote_average_percentage }}</span>
+              <span class="text-slate-900 dark:text-slate-100">{{ title.vote_average_percentage }}</span>
             </div>
           </div>
         </div>
-        <p class="text-white line-clamp-2">{{ title.overview }}</p>
+        <p class="text-slate-900 dark:text-slate-100 line-clamp-2">{{ title.overview }}</p>
         <TitleProviders
           heading="Stream"
           :types="['flatrate', 'free']"
@@ -33,7 +33,7 @@
 
   <div
     v-if="title.backdrop_url"
-    class="absolute top-0 bottom-0 left-0 right-0 bg-slate-950"
+    class="absolute top-0 bottom-0 left-0 right-0 bg-slate-50 dark:bg-slate-950"
   >
     <img
       :src="title.backdrop_url"

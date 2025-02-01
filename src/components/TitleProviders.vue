@@ -1,6 +1,6 @@
 <template>
   <div v-if="providers.length > 0"  class="flex flex-col space-y-2">
-    <h4 class="text-2xl text-slate-100">{{ heading }}</h4>
+    <h4 class="text-2xl tex-slate-900 dark:text-slate-100">{{ heading }}</h4>
     <div class="grid grid-flow-col space-x-2">
       <div v-for="provider in providers" v-key="provider.provider_id">
         <img :src="provider.logo_url" class="w-8 rounded-lg" />
