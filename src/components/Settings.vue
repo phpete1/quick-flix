@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="fixed top-0 bottom-0 left-0 right-0 p-4 z-100" v-show="isOpen">
+    <div class="fixed top-0 bottom-0 left-0 right-0 p-4 z-20" v-show="isOpen">
       <div
         class="bg-slate-50 fixed top-0 bottom-0 left-0 right-0 h-full opacity-75 w-full dark:bg-slate-950"
       ></div>
