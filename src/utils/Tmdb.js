@@ -63,7 +63,7 @@ export default class Tmdb {
     };
 
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-GB&page=1`,
+      `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
       options
     );
 
